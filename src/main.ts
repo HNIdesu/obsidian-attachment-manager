@@ -23,6 +23,12 @@ export default class AttachmentManagerPlugin extends Plugin {
 							plugin.app.fileManager.renameFile(file, newPath)
 						}).open()
 					})
+			}).addItem(item=>{
+				item.setTitle("Delete Attachment")
+					.setIcon("trash-2")
+					.onClick(()=>{
+						plugin.app.fileManager.promptForDeletion(file)
+					})
 			})
 		}
 		plugin.app.workspace.on("file-menu", onFileMenu)
